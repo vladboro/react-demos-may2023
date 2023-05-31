@@ -3,7 +3,7 @@ import React from "react";
 class ImageCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { spans: 0 };
+    this.state = { spans: 0, orientation: null };
     this.imageRef = React.createRef();
   }
 
@@ -14,9 +14,10 @@ class ImageCard extends React.Component {
 
   setSpans = () => {
     const height = this.imageRef.current.clientHeight;
-    console.log(height);
+    const width = this.imageRef.current.clientWidth;
+    const orientation = height > width ? 'vertical' : 'horizontal'
     const spans = Math.ceil(height / 10);
-    this.setState({ spans });
+    this.setState({ spans, orientation });
   };
 
   render() {
@@ -26,6 +27,7 @@ class ImageCard extends React.Component {
           ref={this.imageRef}
           src={this.props.image.urls.regular}
           alt={this.props.image.alt_description}
+          title={this.state.orientation}
         />
       </div>
     );
