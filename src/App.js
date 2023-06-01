@@ -1,35 +1,17 @@
-import { useState } from "react";
-import Link from "./components/Link";
-import Route from "./components/Route";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
 const App = () => {
-  const [location, setLocation] = useState("/");
   return (
     <div>
       <h1>Header</h1>
-      <Link href="/" className="ui link" text="Home" onClick={setLocation} />
-      <Link
-        href="/about"
-        className="ui link"
-        text="About"
-        onClick={setLocation}
-      />
-      <Link
-        href="/contacts"
-        className="ui link"
-        text="Contacts"
-        onClick={setLocation}
-      />
-      <div className="ui container">
-        <Route path="/">
-          <h1>Home page</h1>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<h1>Home</h1>}/>
+          <Route path="about" element={<h1>About</h1>} />
+          <Route path="/contacts" element={<h1>Contacts</h1>} />
+          <Route path="*" element={<h1>No match</h1>} />
         </Route>
-        <Route path="/about">
-          <h1>About</h1>
-        </Route>
-        <Route path="/contacts">
-          <h1>Contacts</h1>
-        </Route>
-      </div>
+      </Routes>
     </div>
   );
 };
