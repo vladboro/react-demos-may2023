@@ -1,7 +1,8 @@
-function App() {
+import Translate from "./components/Translate";
+
+const App = () => {
   return (
-    <div>
-    </div>
+    <Translate />
   );
 }
 
