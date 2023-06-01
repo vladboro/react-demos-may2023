@@ -1,6 +1,5 @@
 const ModalDialog = ({ onClose }) => {
   return (
-    <div className="background">
     <div className="ui fullscreen modal" style={{ display: "block" }}>
       <i className="close icon" onClick={()=>onClose()}></i>
       <div className="header">Modal Dialog</div>
@@ -15,7 +14,6 @@ const ModalDialog = ({ onClose }) => {
           <i className="checkmark icon"></i>
         </div>
       </div>
-    </div>
     </div>
   );
 };

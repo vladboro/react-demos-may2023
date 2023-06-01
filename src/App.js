@@ -3,6 +3,7 @@ import ModalDialog from "./components/ModalDialog";
 import { createPortal } from "react-dom";
 import { ClipLoader } from "react-spinners";
 import "./App.css";
+import Wrapper from "./components/Wrapper";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,16 +14,16 @@ const App = () => {
       <button onClick={() => setShowSpinner(true)}>Show spinner</button>
       {showModal &&
         createPortal(
-          <ModalDialog onClose={() => setShowModal(false)} />,
+          <Wrapper>
+            <ModalDialog onClose={() => setShowModal(false)} />
+          </Wrapper>,
           document.getElementById("portalPlaceholder")
         )}
       {showSpnner &&
         createPortal(
-          <div className="background" onClick={() => setShowSpinner(false)}>
-            <div className="clip">
-              <ClipLoader />
-            </div>
-          </div>,
+          <Wrapper onClick={() => setShowSpinner(false)}>
+            <ClipLoader />
+          </Wrapper>,
           document.getElementById("portalPlaceholder")
         )}
     </div>
